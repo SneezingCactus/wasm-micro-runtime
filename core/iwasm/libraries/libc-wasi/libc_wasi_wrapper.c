@@ -754,6 +754,7 @@ wasi_path_open(wasm_exec_env_t exec_env, wasi_fd_t dirfd,
                wasi_rights_t fs_rights_inheriting, wasi_fdflags_t fs_flags,
                wasi_fd_t *fd_app)
 {
+    dirflags = 0;   // ANDES: force wamr to think there are no symlinks ever
     wasm_module_inst_t module_inst = get_module_inst(exec_env);
     wasi_ctx_t wasi_ctx = get_wasi_ctx(module_inst);
     struct fd_table *curfds = wasi_ctx_get_curfds(wasi_ctx);
